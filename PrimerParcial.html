@@ -319,6 +319,76 @@
     }
 
     //Ordenamiento
+    function OrdenarTabla(compareFunc)
+        {
+            currentArray.sort((a, b) => compareFunc(a, b));
+            LimpiarTabla();
+            crearFila(currentArray);
+        }
+
+        function sortById(a, b)
+        {
+            return a.id - b.id;
+        }
+
+        function sortByDni(a, b)
+        {
+            return a.dni - b.dni;
+        }
+
+        function sortByApellido(a, b)
+        {
+            return a.apellido.localeCompare(b.apellido)
+        }
+
+        function sortByNombre(a, b)
+        {
+            return a.nombre.localeCompare(b.nombre)
+        }
+
+        function sortByCursoLetra(a, b)
+        {
+            if (b.cursoLetra > a.cursoLetra || b.cursoLetra == undefined) {
+            return -1;
+        }
+            if (a.cursoLetra > b.cursoLetra) {
+                return 1;
+            }
+            return 0;
+        }
+
+        function sortByCursoNumero(a, b)
+        {
+            if (b.cursoNumero > a.cursoNumero || b.cursoNumero == undefined) {
+            return -1;
+        }
+            if (a.cursoNumero > b.cursoNumero) {
+                return 1;
+            }
+            return 0;
+        }
+
+        function sortByMateria(a, b)
+        {
+            if (a.materia > b.materia) {
+            return 1;
+        }
+            if (b.materia > a.materia || b.materia == undefined) {
+                return -1;
+            }
+            return 0;
+        }
+
+        function sortByAño(a, b)
+        {
+            if (b.año > a.año || b.año == undefined) {
+            return -1;
+        }
+            if (b.año > a.año) {
+                return 1;
+            }
+            return 0;
+        }
 
     //Suscripcion de eventos
     window.addEventListener("load", ()=>{
@@ -336,6 +406,15 @@
         document.getElementById("cursoNumeroCheck").addEventListener("change",() => ActualizarTabla());
         document.getElementById("materiaCheck").addEventListener("change",() => ActualizarTabla());
         document.getElementById("añoCheck").addEventListener("change",() => ActualizarTabla());
+        //Ordenamiento
+        document.getElementById("idBtn").addEventListener("click",() => OrdenarTabla(sortById));
+        document.getElementById("dniBtn").addEventListener("click",() => OrdenarTabla(sortByDni));
+        document.getElementById("apellidoBtn").addEventListener("click",() => OrdenarTabla(sortByApellido));
+        document.getElementById("nombreBtn").addEventListener("click",() => OrdenarTabla(sortByNombre));
+        document.getElementById("cursoLetraBtn").addEventListener("click",() => OrdenarTabla(sortByCursoLetra));
+        document.getElementById("cursoNumeroBtn").addEventListener("click",() => OrdenarTabla(sortByCursoNumero));
+        document.getElementById("materiaBtn").addEventListener("click",() => OrdenarTabla(sortByMateria));
+        document.getElementById("añoBtn").addEventListener("click",() => OrdenarTabla(sortByAño));
     });
     </script>
 </script>
