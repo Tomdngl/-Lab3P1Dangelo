@@ -4,9 +4,339 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Primer parcial Dangelo</title>
+    <link rel="stylesheet" href="PPPCSS.css">
 </head>
 <body>
-    
+    <div class="form" id="tablaPrincipal">
+        <h1 class="titulo">Form Datos</h1>
+        <p class="normal-text">Filtrar por: 
+            <select id="SelectCmb">
+                <option value="Alumnos">Alumnos</option>
+                <option value="Docentes">Docentes</option>
+                <option value="Todos">Todos</option>
+            </select>
+        </p>
+        <form>Valor Promedio IDs:
+            <input id="PromedioTxt" type="text" readonly="true">
+            <input id= "CalcularBtn" type="button" value="Calcular">
+        </form>
+        <div class="flex-filters-container">
+            <input type="checkbox" id="idCheck" name="idCheck" value="ID" checked>
+            <label for="idCheck" class="check"> ID</label><br>
+            <input type="checkbox" id="dniCheck" name="dniCheck" value="DNI" checked>
+            <label for="dniCheck" class="check"> DNI</label><br>
+            <input type="checkbox" id="apellidoCheck" name="apellidoCheck" value="APELLIDO" checked>
+            <label for="apellidoCheck" class="check"> APELLIDO</label><br>
+            <input type="checkbox" id="nombreCheck" name="nombreCheck" value="NOMBRE" checked>
+            <label for="nombreCheck" class="check"> NOMBRE</label><br>
+            <input type="checkbox" id="cursoLetraCheck" name="cursoLetraCheck" value="CURSO LETRA" checked>
+            <label for="cursoLetraCheck" class="check"> CURSO LETRA</label><br>
+            <input type="checkbox" id="cursoNumeroCheck" name="cursoNumeroCheck" value="CURSO NUMERO" checked>
+            <label for="cursoNumeroCheck" class="check"> CURSO NUMERO</label><br>
+            <input type="checkbox" id="materiaCheck" name="materiaCheck" value="MATERIA" checked>
+            <label for="materiaCheck" class="check"> MATERIA</label><br>
+            <input type="checkbox" id="añoCheck" name="añoCheck" value="AÑO" checked>
+            <label for="añoCheck" class="check"> AÑO</label><br><br>
+        </div>
+        <table class="table">
+        <thead>
+            <tr>
+                <th id="header-id" style="display: table-cell;"><input type="button" id="idBtn" name="idBtn" value="ID"></th>
+                <th id="header-dni" style="display: table-cell;"><input type="button" id="dniBtn" name="dniBtn" value="DNI"></th>
+                <th id="header-apellido" style="display:table-cell"><input type="button" id="apellidoBtn" name="apellidoBtn" value="APELLIDO "></th>
+                <th id="header-nombre" style="display:table-cell"><input type="button" id="nombreBtn" name="nombreBtn" value="NOMBRE"></th>
+                <th id="header-cursoLetra" style="display:table-cell"><input type="button" id="cursoLetraBtn" name="cursoLetraBtn" value="CURSO LETRA"></th>
+                <th id="header-cursoNumero" style="display:table-cell"><input type="button" id="cursoNumeroBtn" name="cursoNumeroBtn" value="CURSO NUMERO"></th>
+                <th id="header-materia" style="display:table-cell"><input type="button" id="materiaBtn" name="materiaBtn" value="MATERIA"></th>
+                <th id="header-año" style="display:table-cell"><input type="button" id="añoBtn" name="añoBtn" value="AÑO"></th>
+            </tr>
+        </thead>
+        <tbody id="cuerpo">
+        </tbody>
+        </table>
+        <form class="addBtn">
+            <input id= "AgregarBtn" type="button" value="AGREGAR">
+        </form>
+    </div>
 </body>
+<script>
+    //Clases
+    class Persona
+    {
+        constructor(par1, par2, par3, par4) {
+                this.id = par1;
+                this.dni = par2;
+                this.apellido = par3;
+                this.nombre = par4;
+            }
+
+        toString()
+        {
+        return "Id: " + this.id + " Dni: " + this.dni + " Apellido: " + this.apellido + " Nombre: " + this.nombre; 
+        }
+    }
+
+    class Alumno extends Persona
+    {
+        constructor(par1, par2, par3, par4, par5, par6)
+        {
+            super(par1, par2, par3, par4);
+            this.cursoLetra = par5;
+            this.cursoNumero = par6;
+        }
+
+        toString()
+        {
+            return super.toString() + " Letra: " + this.edad + " Numero: " + this.sexo;
+        }
+    }
+
+    class Docente extends Persona
+    {
+        constructor(par1, par2, par3, par4, par5, par6)
+        {
+            super(par1, par2, par3, par4);
+            this.materia = par5;
+            this.año = par6;
+        }
+
+        toString()
+        {
+            return super.toString() + " Materia: " + this.edad + " Año: " + this.sexo;
+        }
+    }
+
+    //Codigo
+    //Cargo objetos desde el json
+    let miJsonString = "[{\"id\":1,\"dni\":17663295,\"nombre\":\"FABIAN MARCELO\",\"apellido\":\"ABADIE\",\"cursoNumero\":1,\"cursoLetra\":\"F\"},{\"id\":2,\"dni\":38724762,\"nombre\":\"MAIRA DAIANA\",\"apellido\":\"ABALOS\",\"cursoNumero\":3,\"cursoLetra\":\"M\"},{\"id\":3,\"dni\":25447357,\"nombre\":\"NOELIA LIDIA\",\"apellido\":\"ABBA\",\"cursoNumero\":2,\"cursoLetra\":\"N\"},{\"id\":4,\"dni\":27577699,\"nombre\":\"MARÍA SOLEDAD\",\"apellido\":\"ACHOR\",\"cursoNumero\":2,\"cursoLetra\":\"M\"},{\"id\":900,\"dni\":11496581,\"nombre\":\"JOSE MIGUEL\",\"apellido\":\"ARMALEO\",\"materia\":\"Fisica\",\"año\":1},{\"id\":899,\"dni\":35326658,\"nombre\":\"ROSA DEL VALLE\",\"apellido\":\"LOPEZ\",\"materia\":\"Lengua\",\"año\":3},{\"id\":898,\"dni\":39638351,\"nombre\":\"DANIELA BELEN\",\"apellido\":\"BROGGI D`ATENA\",\"materia\":\"Matematica\",\"año\":3},{\"id\":897,\"dni\":17275566,\"nombre\":\"PABLO ALBERTO\",\"apellido\":\"ALMEIDA\",\"materia\":\"Quimica\",\"año\":1}]";
+    miJson = JSON.parse(miJsonString);
+    let miArray = miJson.map((element, index, array) => {
+            if(element.hasOwnProperty('cursoLetra'))
+            {
+                return new Alumno(element.id, element.dni,element.apellido, element.nombre, element.cursoLetra, element.cursoNumero);
+            }
+            else
+            {
+                return new Docente(element.id, element.dni,element.apellido, element.nombre, element.materia, element.año);
+            }
+        });
+    let currentArray = miArray;
+    let selectedIndex = 0;       
+
+    //Funciones de la tabla
+    function ActualizarLista()
+    {
+        if(document.getElementById("SelectCmb").value == "Alumnos")
+        {
+            currentArray = miArray.filter(isAlumno, true)
+        }
+        else
+        {
+            currentArray = miArray.filter(isAlumno, false)
+        }
+        if(document.getElementById("SelectCmb").value == "Todos")
+        {
+            currentArray = miArray;
+        }
+        LimpiarTabla();
+        crearFila(currentArray);
+    }
+
+    function crearFila(lista)
+    {
+        lista.forEach(element => {
+        var elementCursoLetra = element.cursoLetra;
+        var elementCursoNumero = element.cursoNumero;
+        var elementMateria = element.materia;
+        var elementAño = element.año;
+        if(element.cursoLetra === undefined)
+        {
+            var elementCursoLetra = "N/A"
+            var elementCursoNumero = "N/A"
+        }
+        if(element.materia === undefined)
+        {
+            var elementMateria = "N/A"
+            var elementAño = "N/A"
+        }
+
+        let fila = document.createElement("tr");
+
+        if(document.getElementById("idCheck").checked)
+        {
+            let id = document.createElement("td");
+            id.appendChild(document.createTextNode(element.id))
+            fila.appendChild(id);
+        }
+        if(document.getElementById("dniCheck").checked)
+        {
+        let dni = document.createElement("td");
+        dni.appendChild(document.createTextNode(element.dni))
+        fila.appendChild(dni);
+        }
+        if(document.getElementById("apellidoCheck").checked)
+        {
+        let apellido = document.createElement("td");
+        apellido.appendChild(document.createTextNode(element.apellido))
+        fila.appendChild(apellido);
+        }
+        if(document.getElementById("nombreCheck").checked)
+        {
+        let nombre = document.createElement("td");
+        nombre.appendChild(document.createTextNode(element.nombre))
+        fila.appendChild(nombre);
+        }
+        if(document.getElementById("cursoLetraCheck").checked)
+        {
+        let cursoLetra = document.createElement("td");
+        cursoLetra.appendChild(document.createTextNode(elementCursoLetra))
+        fila.appendChild(cursoLetra);
+        }
+        if(document.getElementById("cursoNumeroCheck").checked)
+        {
+        let cursoNumero = document.createElement("td");
+        cursoNumero.appendChild(document.createTextNode(elementCursoNumero))
+        fila.appendChild(cursoNumero);
+        }
+        if(document.getElementById("materiaCheck").checked)
+        {
+        let materia = document.createElement("td");
+        materia.appendChild(document.createTextNode(elementMateria))
+        fila.appendChild(materia);
+        }
+        if(document.getElementById("añoCheck").checked)
+        {
+        let sueldo = document.createElement("td");
+        sueldo.appendChild(document.createTextNode(elementAño))
+        fila.appendChild(sueldo);
+        }
+
+        fila.setAttribute("id", element.id);
+        fila.addEventListener("dblclick",() => ABMSelect(element.id));
+
+        document.getElementById("cuerpo").appendChild(fila);
+        });
+    }
+    
+    function isAlumno(elemento)
+        {
+            if(this == true)
+            {
+                return elemento instanceof Alumno;
+            }
+            else
+            {
+                return !(elemento instanceof Alumno);
+            }
+        }
+
+    function LimpiarTabla()
+    {
+        Nodo = document.getElementById("cuerpo");
+        while (Nodo.firstChild) {
+        Nodo.removeChild(Nodo.lastChild);
+          }
+    }
+
+    function CalcularPromedioId()
+        {
+            sumaPromedios = currentArray.reduce((valorAnterior, elemento, indice, vector) => {
+            return valorAnterior + parseInt(elemento.id);
+            }, 0)
+
+            let promedio = sumaPromedios / currentArray.length;
+            document.getElementById("PromedioTxt").value = promedio;
+        }
+    //Ocultar columnas
+    function ActualizarTabla()
+    {
+        ActualizarLista()
+        if(!document.getElementById("idCheck").checked)
+            {
+                document.getElementById("header-id").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-id").setAttribute("style", "display: table-cell;");
+            }
+        if(!document.getElementById("dniCheck").checked)
+            {
+                document.getElementById("header-dni").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-dni").setAttribute("style", "display: table-cell;");
+            }
+        if(!document.getElementById("apellidoCheck").checked)
+            {
+                document.getElementById("header-apellido").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-apellido").setAttribute("style", "display: table-cell;");
+            }
+        if(!document.getElementById("nombreCheck").checked)
+            {
+                document.getElementById("header-nombre").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-nombre").setAttribute("style", "display: table-cell;");
+            }
+        if(!document.getElementById("cursoLetraCheck").checked)
+            {
+                document.getElementById("header-cursoLetra").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-cursoLetra").setAttribute("style", "display: table-cell;");
+            }
+        if(!document.getElementById("cursoNumeroCheck").checked)
+            {   
+                document.getElementById("header-cursoNumero").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-cursoNumero").setAttribute("style", "display: table-cell;");
+            }
+        if(!document.getElementById("materiaCheck").checked)
+            {
+                document.getElementById("header-materia").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-materia").setAttribute("style", "display: table-cell;");
+            }
+        if(!document.getElementById("añoCheck").checked)
+            {
+                document.getElementById("header-año").setAttribute("style", "display: none;");
+            }
+        else
+            {
+                document.getElementById("header-año").setAttribute("style", "display: table-cell;");
+            }
+    }
+
+    //Ordenamiento
+
+    //Suscripcion de eventos
+    window.addEventListener("load", ()=>{
+        //Dibujo tabla por primera vez
+        ActualizarLista();
+        //Cambio de lista y promedio de id
+        document.getElementById("SelectCmb").addEventListener("change",() => ActualizarLista());
+        document.getElementById("CalcularBtn").addEventListener("click",() => CalcularPromedioId());
+        //Checks
+        document.getElementById("idCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("dniCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("apellidoCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("nombreCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("cursoLetraCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("cursoNumeroCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("materiaCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("añoCheck").addEventListener("change",() => ActualizarTabla());
+    });
+    </script>
+</script>
 </html>
