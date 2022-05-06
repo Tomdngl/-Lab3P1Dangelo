@@ -1,0 +1,74 @@
+.form {
+    background-color:darkgray;
+    width: min-content;
+    height: min-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ABM {
+    background-color:lightskyblue;
+    width: 350px;
+    height: min-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Abm-btn-container{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.check{
+    white-space: nowrap;
+    font: bold;
+}
+
+.titulo {
+    font-size: 20px;
+    font-family: fantasy;
+}
+
+.normal-text
+{
+    margin-bottom: 0%;
+}
+
+tr th
+{
+    border: 3px solid black;
+}
+
+td
+{
+    border: 3px solid black;
+}
+
+table
+{
+    width: 100%;
+    border: 3px solid black;
+
+}
+
+.flex-filters-container
+{
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+}
+
+.flex-filters-container label
+{
+    margin-bottom: 0%;
+    height: min-content;
+}
+
+.addBtn
+{
+    display: flex;
+    justify-content: center;
+}
