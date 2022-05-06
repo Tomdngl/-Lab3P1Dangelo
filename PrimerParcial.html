@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,11 @@
     <title>Primer parcial Dangelo</title>
     <link rel="stylesheet" href="PPPCSS.css">
 </head>
+
 <body>
     <div class="form" id="tablaPrincipal">
         <h1 class="titulo">Form Datos</h1>
-        <p class="normal-text">Filtrar por: 
+        <p class="normal-text">Filtrar por:
             <select id="SelectCmb">
                 <option value="Alumnos">Alumnos</option>
                 <option value="Docentes">Docentes</option>
@@ -19,7 +21,7 @@
         </p>
         <form>Valor Promedio IDs:
             <input id="PromedioTxt" type="text" readonly="true">
-            <input id= "CalcularBtn" type="button" value="Calcular">
+            <input id="CalcularBtn" type="button" value="Calcular">
         </form>
         <div class="flex-filters-container">
             <input type="checkbox" id="idCheck" name="idCheck" value="ID" checked>
@@ -40,70 +42,96 @@
             <label for="añoCheck" class="check"> AÑO</label><br><br>
         </div>
         <table class="table">
-        <thead>
-            <tr>
-                <th id="header-id" style="display: table-cell;"><input type="button" id="idBtn" name="idBtn" value="ID"></th>
-                <th id="header-dni" style="display: table-cell;"><input type="button" id="dniBtn" name="dniBtn" value="DNI"></th>
-                <th id="header-apellido" style="display:table-cell"><input type="button" id="apellidoBtn" name="apellidoBtn" value="APELLIDO "></th>
-                <th id="header-nombre" style="display:table-cell"><input type="button" id="nombreBtn" name="nombreBtn" value="NOMBRE"></th>
-                <th id="header-cursoLetra" style="display:table-cell"><input type="button" id="cursoLetraBtn" name="cursoLetraBtn" value="CURSO LETRA"></th>
-                <th id="header-cursoNumero" style="display:table-cell"><input type="button" id="cursoNumeroBtn" name="cursoNumeroBtn" value="CURSO NUMERO"></th>
-                <th id="header-materia" style="display:table-cell"><input type="button" id="materiaBtn" name="materiaBtn" value="MATERIA"></th>
-                <th id="header-año" style="display:table-cell"><input type="button" id="añoBtn" name="añoBtn" value="AÑO"></th>
-            </tr>
-        </thead>
-        <tbody id="cuerpo">
-        </tbody>
+            <thead>
+                <tr>
+                    <th id="header-id" style="display: table-cell;"><input type="button" id="idBtn" name="idBtn"
+                            value="ID"></th>
+                    <th id="header-dni" style="display: table-cell;"><input type="button" id="dniBtn" name="dniBtn"
+                            value="DNI"></th>
+                    <th id="header-apellido" style="display:table-cell"><input type="button" id="apellidoBtn"
+                            name="apellidoBtn" value="APELLIDO "></th>
+                    <th id="header-nombre" style="display:table-cell"><input type="button" id="nombreBtn"
+                            name="nombreBtn" value="NOMBRE"></th>
+                    <th id="header-cursoLetra" style="display:table-cell"><input type="button" id="cursoLetraBtn"
+                            name="cursoLetraBtn" value="CURSO LETRA"></th>
+                    <th id="header-cursoNumero" style="display:table-cell"><input type="button" id="cursoNumeroBtn"
+                            name="cursoNumeroBtn" value="CURSO NUMERO"></th>
+                    <th id="header-materia" style="display:table-cell"><input type="button" id="materiaBtn"
+                            name="materiaBtn" value="MATERIA"></th>
+                    <th id="header-año" style="display:table-cell"><input type="button" id="añoBtn" name="añoBtn"
+                            value="AÑO"></th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo">
+            </tbody>
         </table>
         <form class="addBtn">
-            <input id= "AgregarBtn" type="button" value="AGREGAR">
+            <input id="AgregarBtn" type="button" value="AGREGAR">
         </form>
     </div>
+    <form action="" id="Form-ABM" class="ABM" style="display:none">
+        <h1 class="titulo">Form Modificacion/Eliminacion</h1>
+        <label for="IdTxtBox"> Id:</label><br>
+        <input id="IdTxtBox" type="text" readonly><br>
+        <label for="DniTxtBox"> Dni:</label><br>
+        <input id="DniTxtBox" type="number"><br>
+        <label for="ApellidoTxtBox"> Apellido:</label><br>
+        <input id="ApellidoTxtBox" type="text"><br>
+        <label for="NombreTxtBox"> Nombre:</label><br>
+        <input id="NombreTxtBox" type="text"><br>
+        <label for="Abm-TipoCmbBox"> Tipo:</label><br>
+        <select id="Abm-TipoCmbBox">
+            <option value="Alumno">Alumno</option>
+            <option value="Docente">Docente</option>
+        </select><br>
+        <label for="Opc1TxtBox" id="lblOpc1"> Opc1:</label><br>
+        <input id="Opc1" type="text"><br>
+        <label for="Opc2" id="lblOpc2"> Opc2:</label><br>
+        <input id="Opc2" type="number"><br>
+        <div class="Abm-btn-container">
+            <input id="Abm-AgregarBtn" type="button" value="Agregar" class="Abm-btn">
+            <input id="Abm-ModificarBtn" type="button" value="Modificar" class="Abm-btn">
+            <input id="Abm-EliminarBtn" type="button" value="Eliminar" class="Abm-btn">
+            <input id="Abm-CancelarBtn" type="button" value="Cancelar" class="Abm-btn">
+        </div>
+    </form>
 </body>
 <script>
     //Clases
-    class Persona
-    {
+    class Persona {
         constructor(par1, par2, par3, par4) {
-                this.id = par1;
-                this.dni = par2;
-                this.apellido = par3;
-                this.nombre = par4;
-            }
+            this.id = par1;
+            this.dni = par2;
+            this.apellido = par3;
+            this.nombre = par4;
+        }
 
-        toString()
-        {
-        return "Id: " + this.id + " Dni: " + this.dni + " Apellido: " + this.apellido + " Nombre: " + this.nombre; 
+        toString() {
+            return "Id: " + this.id + " Dni: " + this.dni + " Apellido: " + this.apellido + " Nombre: " + this.nombre;
         }
     }
 
-    class Alumno extends Persona
-    {
-        constructor(par1, par2, par3, par4, par5, par6)
-        {
+    class Alumno extends Persona {
+        constructor(par1, par2, par3, par4, par5, par6) {
             super(par1, par2, par3, par4);
             this.cursoLetra = par5;
             this.cursoNumero = par6;
         }
 
-        toString()
-        {
-            return super.toString() + " Letra: " + this.edad + " Numero: " + this.sexo;
+        toString() {
+            return super.toString() + " Letra: " + this.cursoLetra + " Numero: " + this.cursoNumero;
         }
     }
 
-    class Docente extends Persona
-    {
-        constructor(par1, par2, par3, par4, par5, par6)
-        {
+    class Docente extends Persona {
+        constructor(par1, par2, par3, par4, par5, par6) {
             super(par1, par2, par3, par4);
             this.materia = par5;
             this.año = par6;
         }
 
-        toString()
-        {
-            return super.toString() + " Materia: " + this.edad + " Año: " + this.sexo;
+        toString() {
+            return super.toString() + " Materia: " + this.materia + " Año: " + this.año;
         }
     }
 
@@ -112,310 +140,366 @@
     let miJsonString = "[{\"id\":1,\"dni\":17663295,\"nombre\":\"FABIAN MARCELO\",\"apellido\":\"ABADIE\",\"cursoNumero\":1,\"cursoLetra\":\"F\"},{\"id\":2,\"dni\":38724762,\"nombre\":\"MAIRA DAIANA\",\"apellido\":\"ABALOS\",\"cursoNumero\":3,\"cursoLetra\":\"M\"},{\"id\":3,\"dni\":25447357,\"nombre\":\"NOELIA LIDIA\",\"apellido\":\"ABBA\",\"cursoNumero\":2,\"cursoLetra\":\"N\"},{\"id\":4,\"dni\":27577699,\"nombre\":\"MARÍA SOLEDAD\",\"apellido\":\"ACHOR\",\"cursoNumero\":2,\"cursoLetra\":\"M\"},{\"id\":900,\"dni\":11496581,\"nombre\":\"JOSE MIGUEL\",\"apellido\":\"ARMALEO\",\"materia\":\"Fisica\",\"año\":1},{\"id\":899,\"dni\":35326658,\"nombre\":\"ROSA DEL VALLE\",\"apellido\":\"LOPEZ\",\"materia\":\"Lengua\",\"año\":3},{\"id\":898,\"dni\":39638351,\"nombre\":\"DANIELA BELEN\",\"apellido\":\"BROGGI D`ATENA\",\"materia\":\"Matematica\",\"año\":3},{\"id\":897,\"dni\":17275566,\"nombre\":\"PABLO ALBERTO\",\"apellido\":\"ALMEIDA\",\"materia\":\"Quimica\",\"año\":1}]";
     miJson = JSON.parse(miJsonString);
     let miArray = miJson.map((element, index, array) => {
-            if(element.hasOwnProperty('cursoLetra'))
-            {
-                return new Alumno(element.id, element.dni,element.apellido, element.nombre, element.cursoLetra, element.cursoNumero);
-            }
-            else
-            {
-                return new Docente(element.id, element.dni,element.apellido, element.nombre, element.materia, element.año);
-            }
-        });
+        if (element.hasOwnProperty('cursoLetra')) {
+            return new Alumno(element.id, element.dni, element.apellido, element.nombre, element.cursoLetra, element.cursoNumero);
+        }
+        else {
+            return new Docente(element.id, element.dni, element.apellido, element.nombre, element.materia, element.año);
+        }
+    });
     let currentArray = miArray;
-    let selectedIndex = 0;       
+    let alumnosArray = miArray.filter(isAlumno, true);
+    let docentesArray = miArray.filter(isAlumno, false);
+    let selectedIndex = 0;
 
     //Funciones de la tabla
-    function ActualizarLista()
-    {
-        if(document.getElementById("SelectCmb").value == "Alumnos")
-        {
+    function ActualizarLista() {
+        if (document.getElementById("SelectCmb").value == "Alumnos") {
             currentArray = miArray.filter(isAlumno, true)
         }
-        else
-        {
+        else {
             currentArray = miArray.filter(isAlumno, false)
         }
-        if(document.getElementById("SelectCmb").value == "Todos")
-        {
+        if (document.getElementById("SelectCmb").value == "Todos") {
             currentArray = miArray;
         }
         LimpiarTabla();
         crearFila(currentArray);
     }
 
-    function crearFila(lista)
-    {
+    function crearFila(lista) {
         lista.forEach(element => {
-        var elementCursoLetra = element.cursoLetra;
-        var elementCursoNumero = element.cursoNumero;
-        var elementMateria = element.materia;
-        var elementAño = element.año;
-        if(element.cursoLetra === undefined)
-        {
-            var elementCursoLetra = "N/A"
-            var elementCursoNumero = "N/A"
-        }
-        if(element.materia === undefined)
-        {
-            var elementMateria = "N/A"
-            var elementAño = "N/A"
-        }
+            var elementCursoLetra = element.cursoLetra;
+            var elementCursoNumero = element.cursoNumero;
+            var elementMateria = element.materia;
+            var elementAño = element.año;
+            if (element.cursoLetra === undefined) {
+                var elementCursoLetra = "N/A"
+                var elementCursoNumero = "N/A"
+            }
+            if (element.materia === undefined) {
+                var elementMateria = "N/A"
+                var elementAño = "N/A"
+            }
 
-        let fila = document.createElement("tr");
+            let fila = document.createElement("tr");
 
-        if(document.getElementById("idCheck").checked)
-        {
-            let id = document.createElement("td");
-            id.appendChild(document.createTextNode(element.id))
-            fila.appendChild(id);
-        }
-        if(document.getElementById("dniCheck").checked)
-        {
-        let dni = document.createElement("td");
-        dni.appendChild(document.createTextNode(element.dni))
-        fila.appendChild(dni);
-        }
-        if(document.getElementById("apellidoCheck").checked)
-        {
-        let apellido = document.createElement("td");
-        apellido.appendChild(document.createTextNode(element.apellido))
-        fila.appendChild(apellido);
-        }
-        if(document.getElementById("nombreCheck").checked)
-        {
-        let nombre = document.createElement("td");
-        nombre.appendChild(document.createTextNode(element.nombre))
-        fila.appendChild(nombre);
-        }
-        if(document.getElementById("cursoLetraCheck").checked)
-        {
-        let cursoLetra = document.createElement("td");
-        cursoLetra.appendChild(document.createTextNode(elementCursoLetra))
-        fila.appendChild(cursoLetra);
-        }
-        if(document.getElementById("cursoNumeroCheck").checked)
-        {
-        let cursoNumero = document.createElement("td");
-        cursoNumero.appendChild(document.createTextNode(elementCursoNumero))
-        fila.appendChild(cursoNumero);
-        }
-        if(document.getElementById("materiaCheck").checked)
-        {
-        let materia = document.createElement("td");
-        materia.appendChild(document.createTextNode(elementMateria))
-        fila.appendChild(materia);
-        }
-        if(document.getElementById("añoCheck").checked)
-        {
-        let sueldo = document.createElement("td");
-        sueldo.appendChild(document.createTextNode(elementAño))
-        fila.appendChild(sueldo);
-        }
+            if (document.getElementById("idCheck").checked) {
+                let id = document.createElement("td");
+                id.appendChild(document.createTextNode(element.id))
+                fila.appendChild(id);
+            }
+            if (document.getElementById("dniCheck").checked) {
+                let dni = document.createElement("td");
+                dni.appendChild(document.createTextNode(element.dni))
+                fila.appendChild(dni);
+            }
+            if (document.getElementById("apellidoCheck").checked) {
+                let apellido = document.createElement("td");
+                apellido.appendChild(document.createTextNode(element.apellido))
+                fila.appendChild(apellido);
+            }
+            if (document.getElementById("nombreCheck").checked) {
+                let nombre = document.createElement("td");
+                nombre.appendChild(document.createTextNode(element.nombre))
+                fila.appendChild(nombre);
+            }
+            if (document.getElementById("cursoLetraCheck").checked) {
+                let cursoLetra = document.createElement("td");
+                cursoLetra.appendChild(document.createTextNode(elementCursoLetra))
+                fila.appendChild(cursoLetra);
+            }
+            if (document.getElementById("cursoNumeroCheck").checked) {
+                let cursoNumero = document.createElement("td");
+                cursoNumero.appendChild(document.createTextNode(elementCursoNumero))
+                fila.appendChild(cursoNumero);
+            }
+            if (document.getElementById("materiaCheck").checked) {
+                let materia = document.createElement("td");
+                materia.appendChild(document.createTextNode(elementMateria))
+                fila.appendChild(materia);
+            }
+            if (document.getElementById("añoCheck").checked) {
+                let sueldo = document.createElement("td");
+                sueldo.appendChild(document.createTextNode(elementAño))
+                fila.appendChild(sueldo);
+            }
 
-        fila.setAttribute("id", element.id);
-        fila.addEventListener("dblclick",() => ABMSelect(element.id));
+            fila.setAttribute("id", element.id);
+            fila.addEventListener("dblclick", () => ABMSelect(element.id));
 
-        document.getElementById("cuerpo").appendChild(fila);
+            document.getElementById("cuerpo").appendChild(fila);
         });
     }
-    
-    function isAlumno(elemento)
-        {
-            if(this == true)
-            {
-                return elemento instanceof Alumno;
-            }
-            else
-            {
-                return !(elemento instanceof Alumno);
-            }
-        }
 
-    function LimpiarTabla()
-    {
-        Nodo = document.getElementById("cuerpo");
-        while (Nodo.firstChild) {
-        Nodo.removeChild(Nodo.lastChild);
-          }
+    function isAlumno(elemento) {
+        if (this == true) {
+            return elemento instanceof Alumno;
+        }
+        else {
+            return !(elemento instanceof Alumno);
+        }
     }
 
-    function CalcularPromedioId()
-        {
-            sumaPromedios = currentArray.reduce((valorAnterior, elemento, indice, vector) => {
-            return valorAnterior + parseInt(elemento.id);
-            }, 0)
-
-            let promedio = sumaPromedios / currentArray.length;
-            document.getElementById("PromedioTxt").value = promedio;
+    function LimpiarTabla() {
+        Nodo = document.getElementById("cuerpo");
+        while (Nodo.firstChild) {
+            Nodo.removeChild(Nodo.lastChild);
         }
+    }
+
+    function CalcularPromedioId() {
+        sumaPromedios = currentArray.reduce((valorAnterior, elemento, indice, vector) => {
+            return valorAnterior + parseInt(elemento.id);
+        }, 0)
+
+        let promedio = sumaPromedios / currentArray.length;
+        document.getElementById("PromedioTxt").value = promedio;
+    }
     //Ocultar columnas
-    function ActualizarTabla()
-    {
+    function ActualizarTabla() {
         ActualizarLista()
-        if(!document.getElementById("idCheck").checked)
-            {
-                document.getElementById("header-id").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-id").setAttribute("style", "display: table-cell;");
-            }
-        if(!document.getElementById("dniCheck").checked)
-            {
-                document.getElementById("header-dni").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-dni").setAttribute("style", "display: table-cell;");
-            }
-        if(!document.getElementById("apellidoCheck").checked)
-            {
-                document.getElementById("header-apellido").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-apellido").setAttribute("style", "display: table-cell;");
-            }
-        if(!document.getElementById("nombreCheck").checked)
-            {
-                document.getElementById("header-nombre").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-nombre").setAttribute("style", "display: table-cell;");
-            }
-        if(!document.getElementById("cursoLetraCheck").checked)
-            {
-                document.getElementById("header-cursoLetra").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-cursoLetra").setAttribute("style", "display: table-cell;");
-            }
-        if(!document.getElementById("cursoNumeroCheck").checked)
-            {   
-                document.getElementById("header-cursoNumero").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-cursoNumero").setAttribute("style", "display: table-cell;");
-            }
-        if(!document.getElementById("materiaCheck").checked)
-            {
-                document.getElementById("header-materia").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-materia").setAttribute("style", "display: table-cell;");
-            }
-        if(!document.getElementById("añoCheck").checked)
-            {
-                document.getElementById("header-año").setAttribute("style", "display: none;");
-            }
-        else
-            {
-                document.getElementById("header-año").setAttribute("style", "display: table-cell;");
-            }
+        if (!document.getElementById("idCheck").checked) {
+            document.getElementById("header-id").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-id").setAttribute("style", "display: table-cell;");
+        }
+        if (!document.getElementById("dniCheck").checked) {
+            document.getElementById("header-dni").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-dni").setAttribute("style", "display: table-cell;");
+        }
+        if (!document.getElementById("apellidoCheck").checked) {
+            document.getElementById("header-apellido").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-apellido").setAttribute("style", "display: table-cell;");
+        }
+        if (!document.getElementById("nombreCheck").checked) {
+            document.getElementById("header-nombre").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-nombre").setAttribute("style", "display: table-cell;");
+        }
+        if (!document.getElementById("cursoLetraCheck").checked) {
+            document.getElementById("header-cursoLetra").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-cursoLetra").setAttribute("style", "display: table-cell;");
+        }
+        if (!document.getElementById("cursoNumeroCheck").checked) {
+            document.getElementById("header-cursoNumero").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-cursoNumero").setAttribute("style", "display: table-cell;");
+        }
+        if (!document.getElementById("materiaCheck").checked) {
+            document.getElementById("header-materia").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-materia").setAttribute("style", "display: table-cell;");
+        }
+        if (!document.getElementById("añoCheck").checked) {
+            document.getElementById("header-año").setAttribute("style", "display: none;");
+        }
+        else {
+            document.getElementById("header-año").setAttribute("style", "display: table-cell;");
+        }
     }
 
     //Ordenamiento
-    function OrdenarTabla(compareFunc)
-        {
-            currentArray.sort((a, b) => compareFunc(a, b));
-            LimpiarTabla();
-            crearFila(currentArray);
-        }
+    function OrdenarTabla(compareFunc) {
+        currentArray.sort((a, b) => compareFunc(a, b));
+        LimpiarTabla();
+        crearFila(currentArray);
+    }
 
-        function sortById(a, b)
-        {
-            return a.id - b.id;
-        }
+    function sortById(a, b) {
+        return a.id - b.id;
+    }
 
-        function sortByDni(a, b)
-        {
-            return a.dni - b.dni;
-        }
+    function sortByDni(a, b) {
+        return a.dni - b.dni;
+    }
 
-        function sortByApellido(a, b)
-        {
-            return a.apellido.localeCompare(b.apellido)
-        }
+    function sortByApellido(a, b) {
+        return a.apellido.localeCompare(b.apellido)
+    }
 
-        function sortByNombre(a, b)
-        {
-            return a.nombre.localeCompare(b.nombre)
-        }
+    function sortByNombre(a, b) {
+        return a.nombre.localeCompare(b.nombre)
+    }
 
-        function sortByCursoLetra(a, b)
-        {
-            if (b.cursoLetra > a.cursoLetra || b.cursoLetra == undefined) {
+    function sortByCursoLetra(a, b) {
+        if (b.cursoLetra > a.cursoLetra || b.cursoLetra == undefined) {
             return -1;
         }
-            if (a.cursoLetra > b.cursoLetra) {
-                return 1;
-            }
-            return 0;
-        }
-
-        function sortByCursoNumero(a, b)
-        {
-            if (b.cursoNumero > a.cursoNumero || b.cursoNumero == undefined) {
-            return -1;
-        }
-            if (a.cursoNumero > b.cursoNumero) {
-                return 1;
-            }
-            return 0;
-        }
-
-        function sortByMateria(a, b)
-        {
-            if (a.materia > b.materia) {
+        if (a.cursoLetra > b.cursoLetra) {
             return 1;
         }
-            if (b.materia > a.materia || b.materia == undefined) {
-                return -1;
-            }
-            return 0;
-        }
+        return 0;
+    }
 
-        function sortByAño(a, b)
-        {
-            if (b.año > a.año || b.año == undefined) {
+    function sortByCursoNumero(a, b) {
+        if (b.cursoNumero > a.cursoNumero || b.cursoNumero == undefined) {
             return -1;
         }
-            if (b.año > a.año) {
-                return 1;
-            }
-            return 0;
+        if (a.cursoNumero > b.cursoNumero) {
+            return 1;
         }
+        return 0;
+    }
+
+    function sortByMateria(a, b) {
+        if (a.materia > b.materia) {
+            return 1;
+        }
+        if (b.materia > a.materia || b.materia == undefined) {
+            return -1;
+        }
+        return 0;
+    }
+
+    function sortByAño(a, b) {
+        if (b.año > a.año || b.año == undefined) {
+            return -1;
+        }
+        if (b.año > a.año) {
+            return 1;
+        }
+        return 0;
+    }
+
+    //ABM Form
+    function ActualizarABM() {
+        document.getElementById("tablaPrincipal").setAttribute("style", "display: none;");
+        document.getElementById("Form-ABM").setAttribute("style", "display: block;");
+        document.getElementById("Abm-ModificarBtn").setAttribute("disabled", "true;");
+        document.getElementById("Abm-EliminarBtn").setAttribute("disabled", "true;");
+        document.getElementById("Abm-AgregarBtn").removeAttribute("disabled");
+        document.getElementById("Abm-TipoCmbBox").removeAttribute("disabled");
+        if (document.getElementById("Abm-TipoCmbBox").value == "Alumno") {
+            document.getElementById("lblOpc1").textContent = "Curso Letra";
+            document.getElementById("lblOpc2").textContent = "Curso Numero";
+        }
+        else {
+            document.getElementById("lblOpc1").textContent = "Materia";
+            document.getElementById("lblOpc2").textContent = "Año";
+        }
+        document.getElementById("IdTxtBox").value = "";
+        document.getElementById("ApellidoTxtBox").value = "";
+        document.getElementById("NombreTxtBox").value = "";
+        document.getElementById("Opc1").value = "";
+        document.getElementById("Opc2").value = "";
+    }
+
+    function CerrarABM() {
+        document.getElementById("tablaPrincipal").setAttribute("style", "display: block;")
+        document.getElementById("Form-ABM").setAttribute("style", "display: none;")
+        ActualizarTabla();
+        ActualizarLista();
+    }
+
+    function AgregarABM() {
+        let isOk = true;
+        let apellido;
+        let nombre;
+        let dni;
+        if (document.getElementById("DniTxtBox").value != "") {
+            dni = document.getElementById("DniTxtBox").value
+        }
+        else {
+            isOk = false
+        }
+        if (document.getElementById("ApellidoTxtBox").value != "") {
+            apellido = document.getElementById("ApellidoTxtBox").value
+        }
+        else {
+            isOk = false
+        }
+        if (document.getElementById("NombreTxtBox").value != "") {
+            nombre = document.getElementById("NombreTxtBox").value
+        }
+        else {
+            isOk = false
+        }
+        switch (document.getElementById("Abm-TipoCmbBox").value) {
+            case "Alumno":
+                let id = alumnosArray.reduce((max, element) => max = max > element.id ? max : element.id, 0);
+                id = (parseInt(id) + 1).toString();
+                if (/^[A-Z]+$/.test(document.getElementById("Opc1").value) && /^[0-9]+$/.test(document.getElementById("Opc2").value)) {
+                    cursoLetra = document.getElementById("Opc1").value
+                    cursoNumero = document.getElementById("Opc2").value
+                    nuevoAlumno = new Alumno(id, dni, apellido, nombre, cursoLetra, cursoNumero)
+                    if (nuevoAlumno != null && isOk) {
+                        miArray.push(nuevoAlumno);
+                        alumnosArray.push(nuevoAlumno);
+                        console.log(nuevoAlumno.toString());
+                        CerrarABM();
+                    }
+                }
+                else {
+                    alert("Por favor, complete los cuadros de texto con datos válidos para poder realizar un alta.");
+                }
+                break;
+            case "Docente":
+                if (/^[A-z]+$/.test(document.getElementById("Opc1").value) && /^[0-9]+$/.test(document.getElementById("Opc2").value)) {
+                    let id = docentesArray.reduce((max, element) => max = max > element.id ? max : element.id, 0);
+                      id = (parseInt(id) + 1).toString();
+                    materia = document.getElementById("Opc1").value
+                    año = document.getElementById("Opc2").value
+                    nuevoDocente = new Docente(id, dni, apellido, nombre, materia, año)
+                    if (nuevoDocente != null && isOk) {
+                        miArray.push(nuevoDocente);
+                        console.log(nuevoDocente.toString());
+                        CerrarABM();
+                    }
+                }
+                else {
+                    alert("Por favor, complete los cuadros de texto con datos válidos para poder realizar un alta.");
+                }
+                break;
+        }
+    }
 
     //Suscripcion de eventos
-    window.addEventListener("load", ()=>{
+    window.addEventListener("load", () => {
         //Dibujo tabla por primera vez
         ActualizarLista();
         //Cambio de lista y promedio de id
-        document.getElementById("SelectCmb").addEventListener("change",() => ActualizarLista());
-        document.getElementById("CalcularBtn").addEventListener("click",() => CalcularPromedioId());
+        document.getElementById("SelectCmb").addEventListener("change", () => ActualizarLista());
+        document.getElementById("CalcularBtn").addEventListener("click", () => CalcularPromedioId());
         //Checks
-        document.getElementById("idCheck").addEventListener("change",() => ActualizarTabla());
-        document.getElementById("dniCheck").addEventListener("change",() => ActualizarTabla());
-        document.getElementById("apellidoCheck").addEventListener("change",() => ActualizarTabla());
-        document.getElementById("nombreCheck").addEventListener("change",() => ActualizarTabla());
-        document.getElementById("cursoLetraCheck").addEventListener("change",() => ActualizarTabla());
-        document.getElementById("cursoNumeroCheck").addEventListener("change",() => ActualizarTabla());
-        document.getElementById("materiaCheck").addEventListener("change",() => ActualizarTabla());
-        document.getElementById("añoCheck").addEventListener("change",() => ActualizarTabla());
+        document.getElementById("idCheck").addEventListener("change", () => ActualizarTabla());
+        document.getElementById("dniCheck").addEventListener("change", () => ActualizarTabla());
+        document.getElementById("apellidoCheck").addEventListener("change", () => ActualizarTabla());
+        document.getElementById("nombreCheck").addEventListener("change", () => ActualizarTabla());
+        document.getElementById("cursoLetraCheck").addEventListener("change", () => ActualizarTabla());
+        document.getElementById("cursoNumeroCheck").addEventListener("change", () => ActualizarTabla());
+        document.getElementById("materiaCheck").addEventListener("change", () => ActualizarTabla());
+        document.getElementById("añoCheck").addEventListener("change", () => ActualizarTabla());
         //Ordenamiento
-        document.getElementById("idBtn").addEventListener("click",() => OrdenarTabla(sortById));
-        document.getElementById("dniBtn").addEventListener("click",() => OrdenarTabla(sortByDni));
-        document.getElementById("apellidoBtn").addEventListener("click",() => OrdenarTabla(sortByApellido));
-        document.getElementById("nombreBtn").addEventListener("click",() => OrdenarTabla(sortByNombre));
-        document.getElementById("cursoLetraBtn").addEventListener("click",() => OrdenarTabla(sortByCursoLetra));
-        document.getElementById("cursoNumeroBtn").addEventListener("click",() => OrdenarTabla(sortByCursoNumero));
-        document.getElementById("materiaBtn").addEventListener("click",() => OrdenarTabla(sortByMateria));
-        document.getElementById("añoBtn").addEventListener("click",() => OrdenarTabla(sortByAño));
+        document.getElementById("idBtn").addEventListener("click", () => OrdenarTabla(sortById));
+        document.getElementById("dniBtn").addEventListener("click", () => OrdenarTabla(sortByDni));
+        document.getElementById("apellidoBtn").addEventListener("click", () => OrdenarTabla(sortByApellido));
+        document.getElementById("nombreBtn").addEventListener("click", () => OrdenarTabla(sortByNombre));
+        document.getElementById("cursoLetraBtn").addEventListener("click", () => OrdenarTabla(sortByCursoLetra));
+        document.getElementById("cursoNumeroBtn").addEventListener("click", () => OrdenarTabla(sortByCursoNumero));
+        document.getElementById("materiaBtn").addEventListener("click", () => OrdenarTabla(sortByMateria));
+        document.getElementById("añoBtn").addEventListener("click", () => OrdenarTabla(sortByAño));
+        //ABM Form
+        document.getElementById("AgregarBtn").addEventListener("click", () => ActualizarABM());
+
+        document.getElementById("Abm-AgregarBtn").addEventListener("click", () => AgregarABM());
+        document.getElementById("Abm-ModificarBtn").addEventListener("click", () => ModificarABM());
+        document.getElementById("Abm-EliminarBtn").addEventListener("click", () => EliminarABM());
+        document.getElementById("Abm-CancelarBtn").addEventListener("click", () => CerrarABM());
+
+        document.getElementById("Abm-TipoCmbBox").addEventListener("change", () => ActualizarABM());
     });
-    </script>
 </script>
+</script>
+
 </html>
