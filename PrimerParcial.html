@@ -389,6 +389,7 @@
             document.getElementById("lblOpc2").textContent = "Año";
         }
         document.getElementById("IdTxtBox").value = "";
+        document.getElementById("DniTxtBox").value = "";
         document.getElementById("ApellidoTxtBox").value = "";
         document.getElementById("NombreTxtBox").value = "";
         document.getElementById("Opc1").value = "";
@@ -447,7 +448,7 @@
             case "Docente":
                 if (/^[A-z]+$/.test(document.getElementById("Opc1").value) && /^[0-9]+$/.test(document.getElementById("Opc2").value)) {
                     let id = docentesArray.reduce((max, element) => max = max > element.id ? max : element.id, 0);
-                      id = (parseInt(id) + 1).toString();
+                    id = (parseInt(id) + 1).toString();
                     materia = document.getElementById("Opc1").value
                     año = document.getElementById("Opc2").value
                     nuevoDocente = new Docente(id, dni, apellido, nombre, materia, año)
@@ -463,6 +464,65 @@
                 break;
         }
     }
+
+    function ABMSelect(fila) {
+        ActualizarABM();
+        document.getElementById("Abm-AgregarBtn").setAttribute("disabled", "true;");
+        document.getElementById("Abm-TipoCmbBox").setAttribute("disabled", "true;");
+        document.getElementById("Abm-ModificarBtn").removeAttribute("disabled");
+        document.getElementById("Abm-EliminarBtn").removeAttribute("disabled");
+
+        index = miArray.findIndex(element => element.id === fila)
+
+        document.getElementById("IdTxtBox").value = miArray[index].id;
+        document.getElementById("DniTxtBox").value = miArray[index].dni;
+        document.getElementById("ApellidoTxtBox").value = miArray[index].apellido;
+        document.getElementById("NombreTxtBox").value = miArray[index].nombre;
+        if (miArray[index] instanceof Alumno) {
+            document.getElementById("Abm-TipoCmbBox").value = "Alumno"
+            document.getElementById("lblOpc1").textContent = "Curso Letra"
+            document.getElementById("lblOpc2").textContent = "Curso Numero"
+
+            document.getElementById("Opc1").value = miArray[index].cursoLetra;
+            document.getElementById("Opc2").value = miArray[index].cursoNumero;
+        }
+        else if (miArray[index] instanceof Docente) {
+            document.getElementById("Abm-TipoCmbBox").value = "Docente"
+            document.getElementById("lblOpc1").textContent = "Materia"
+            document.getElementById("lblOpc2").textContent = "Año"
+
+            document.getElementById("Opc1").value = miArray[index].materia;
+            document.getElementById("Opc2").value = miArray[index].año;
+        }
+
+        selectedIndex = index;
+    }
+
+    function ModificarABM() {
+        miArray[index].dni = document.getElementById("DniTxtBox").value;
+        miArray[index].apellido = document.getElementById("ApellidoTxtBox").value;
+        miArray[index].nombre = document.getElementById("NombreTxtBox").value;
+
+        switch (document.getElementById("Abm-TipoCmbBox").value) {
+            case "Alumno":
+                miArray[index].cursoLetra = document.getElementById("Opc1").value;
+                miArray[index].cursoNumero = document.getElementById("Opc2").value;
+                break;
+            case "Docente":
+                miArray[index].materia = document.getElementById("Opc1").value;
+                miArray[index].año = document.getElementById("Opc2").value;
+                break;
+        }
+        CerrarABM();
+    }
+
+    function EliminarABM()
+        {
+            if (index > -1) {
+            miArray.splice(index, 1);
+            }
+            CerrarABM();           
+        }
 
     //Suscripcion de eventos
     window.addEventListener("load", () => {
