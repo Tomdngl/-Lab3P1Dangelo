@@ -12,16 +12,16 @@
 <body>
     <div class="form" id="tablaPrincipal">
         <h1 class="titulo">Form Datos</h1>
-        <p class="normal-text">Filtrar por:
-            <select id="SelectCmb">
+        <p class="regular-text">Filtrar por:
+            <select id="SelectCmb" class="input">
                 <option value="Alumnos">Alumnos</option>
                 <option value="Docentes">Docentes</option>
                 <option value="Todos">Todos</option>
             </select>
         </p>
         <form>Valor Promedio IDs:
-            <input id="PromedioTxt" type="text" readonly="true">
-            <input id="CalcularBtn" type="button" value="Calcular">
+            <input id="PromedioTxt" type="text" readonly="true" class="input">
+            <input id="CalcularBtn" type="button" value="Calcular" class="btn">
         </form>
         <div class="flex-filters-container">
             <input type="checkbox" id="idCheck" name="idCheck" value="ID" checked>
@@ -45,54 +45,54 @@
             <thead>
                 <tr>
                     <th id="header-id" style="display: table-cell;"><input type="button" id="idBtn" name="idBtn"
-                            value="ID"></th>
+                            class="btn" value="ID"></th>
                     <th id="header-dni" style="display: table-cell;"><input type="button" id="dniBtn" name="dniBtn"
-                            value="DNI"></th>
+                            class="btn" value="DNI"></th>
                     <th id="header-apellido" style="display:table-cell"><input type="button" id="apellidoBtn"
-                            name="apellidoBtn" value="APELLIDO "></th>
+                            name="apellidoBtn" class="btn" value="APELLIDO "></th>
                     <th id="header-nombre" style="display:table-cell"><input type="button" id="nombreBtn"
-                            name="nombreBtn" value="NOMBRE"></th>
+                            name="nombreBtn" class="btn" value="NOMBRE"></th>
                     <th id="header-cursoLetra" style="display:table-cell"><input type="button" id="cursoLetraBtn"
-                            name="cursoLetraBtn" value="CURSO LETRA"></th>
+                            name="cursoLetraBtn" class="btn" value="CURSO LETRA"></th>
                     <th id="header-cursoNumero" style="display:table-cell"><input type="button" id="cursoNumeroBtn"
-                            name="cursoNumeroBtn" value="CURSO NUMERO"></th>
+                            name="cursoNumeroBtn" class="btn" value="CURSO NUMERO"></th>
                     <th id="header-materia" style="display:table-cell"><input type="button" id="materiaBtn"
-                            name="materiaBtn" value="MATERIA"></th>
+                            name="materiaBtn" class="btn" value="MATERIA"></th>
                     <th id="header-año" style="display:table-cell"><input type="button" id="añoBtn" name="añoBtn"
-                            value="AÑO"></th>
+                            class="btn" value="AÑO"></th>
                 </tr>
             </thead>
             <tbody id="cuerpo">
             </tbody>
         </table>
         <form class="addBtn">
-            <input id="AgregarBtn" type="button" value="AGREGAR">
+            <input class="btn" id="AgregarBtn" type="button" value="AGREGAR">
         </form>
     </div>
     <form action="" id="Form-ABM" class="ABM" style="display:none">
         <h1 class="titulo">Form Modificacion/Eliminacion</h1>
         <label for="IdTxtBox"> Id:</label><br>
-        <input id="IdTxtBox" type="text" readonly><br>
+        <input class="input" id="IdTxtBox" type="text" readonly><br>
         <label for="DniTxtBox"> Dni:</label><br>
-        <input id="DniTxtBox" type="number"><br>
+        <input class="input" id="DniTxtBox" type="number"><br>
         <label for="ApellidoTxtBox"> Apellido:</label><br>
-        <input id="ApellidoTxtBox" type="text"><br>
+        <input class="input" id="ApellidoTxtBox" type="text"><br>
         <label for="NombreTxtBox"> Nombre:</label><br>
-        <input id="NombreTxtBox" type="text"><br>
+        <input class="input" id="NombreTxtBox" type="text"><br>
         <label for="Abm-TipoCmbBox"> Tipo:</label><br>
-        <select id="Abm-TipoCmbBox">
+        <select id="Abm-TipoCmbBox" class="input">
             <option value="Alumno">Alumno</option>
             <option value="Docente">Docente</option>
         </select><br>
         <label for="Opc1TxtBox" id="lblOpc1"> Opc1:</label><br>
-        <input id="Opc1" type="text"><br>
+        <input id="Opc1" type="text" class="input"><br>
         <label for="Opc2" id="lblOpc2"> Opc2:</label><br>
-        <input id="Opc2" type="number"><br>
+        <input id="Opc2" type="number" class="input"><br>
         <div class="Abm-btn-container">
-            <input id="Abm-AgregarBtn" type="button" value="Agregar" class="Abm-btn">
-            <input id="Abm-ModificarBtn" type="button" value="Modificar" class="Abm-btn">
-            <input id="Abm-EliminarBtn" type="button" value="Eliminar" class="Abm-btn">
-            <input id="Abm-CancelarBtn" type="button" value="Cancelar" class="Abm-btn">
+            <input id="Abm-AgregarBtn" type="button" value="Agregar" class="btn">
+            <input id="Abm-ModificarBtn" type="button" value="Modificar" class="btn">
+            <input id="Abm-EliminarBtn" type="button" value="Eliminar" class="btn">
+            <input id="Abm-CancelarBtn" type="button" value="Cancelar" class="btn">
         </div>
     </form>
 </body>
@@ -135,7 +135,6 @@
         }
     }
 
-    //Codigo
     //Cargo objetos desde el json
     let miJsonString = "[{\"id\":1,\"dni\":17663295,\"nombre\":\"FABIAN MARCELO\",\"apellido\":\"ABADIE\",\"cursoNumero\":1,\"cursoLetra\":\"F\"},{\"id\":2,\"dni\":38724762,\"nombre\":\"MAIRA DAIANA\",\"apellido\":\"ABALOS\",\"cursoNumero\":3,\"cursoLetra\":\"M\"},{\"id\":3,\"dni\":25447357,\"nombre\":\"NOELIA LIDIA\",\"apellido\":\"ABBA\",\"cursoNumero\":2,\"cursoLetra\":\"N\"},{\"id\":4,\"dni\":27577699,\"nombre\":\"MARÍA SOLEDAD\",\"apellido\":\"ACHOR\",\"cursoNumero\":2,\"cursoLetra\":\"M\"},{\"id\":900,\"dni\":11496581,\"nombre\":\"JOSE MIGUEL\",\"apellido\":\"ARMALEO\",\"materia\":\"Fisica\",\"año\":1},{\"id\":899,\"dni\":35326658,\"nombre\":\"ROSA DEL VALLE\",\"apellido\":\"LOPEZ\",\"materia\":\"Lengua\",\"año\":3},{\"id\":898,\"dni\":39638351,\"nombre\":\"DANIELA BELEN\",\"apellido\":\"BROGGI D`ATENA\",\"materia\":\"Matematica\",\"año\":3},{\"id\":897,\"dni\":17275566,\"nombre\":\"PABLO ALBERTO\",\"apellido\":\"ALMEIDA\",\"materia\":\"Quimica\",\"año\":1}]";
     miJson = JSON.parse(miJsonString);
@@ -516,13 +515,12 @@
         CerrarABM();
     }
 
-    function EliminarABM()
-        {
-            if (index > -1) {
+    function EliminarABM() {
+        if (index > -1) {
             miArray.splice(index, 1);
-            }
-            CerrarABM();           
         }
+        CerrarABM();
+    }
 
     //Suscripcion de eventos
     window.addEventListener("load", () => {

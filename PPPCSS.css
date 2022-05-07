@@ -7,7 +7,7 @@
 }
 
 .ABM {
-    background-color:lightskyblue;
+    background-color:darkgray;
     width: 350px;
     height: min-content;
     margin-left: auto;
@@ -24,15 +24,19 @@
 
 .check{
     white-space: nowrap;
-    font: bold;
+    font:700;
+    font-family:sans-serif
 }
 
 .titulo {
     font-size: 20px;
-    font-family: fantasy;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:burlywood;
+    text-align: center;
+    background: gray;
 }
 
-.normal-text
+.regular-text
 {
     margin-bottom: 0%;
 }
@@ -51,13 +55,13 @@ table
 {
     width: 100%;
     border: 3px solid black;
-
 }
 
 .flex-filters-container
 {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     height: 20px;
 }
 
@@ -71,4 +75,17 @@ table
 {
     display: flex;
     justify-content: center;
+}
+
+.input
+{
+    background-color: #555555;
+    color: wheat;
+}
+
+.btn
+{
+    background-color: #555555;
+    color: wheat;
+    margin: 3px;
 }
